@@ -1,12 +1,13 @@
 use std::ops::Deref;
+use crate::dynvec::{DynVec, Handle};
 
 pub struct Elem<'a, T> {
-    parent: &'a DynVec<T>,
-    handle: Handle,
+    pub parent: &'a DynVec<T>,
+    pub handle: Handle,
 }
 
 impl<'a, T> Elem<'a, T> {
-    fn new(parent: &'a DynVec<T>, handle: Handle) -> Option<Self> {
+    pub fn new(parent: &'a DynVec<T>, handle: Handle) -> Option<Self> {
         parent.get(handle).map(|_| Self { parent, handle })
     }
 }
